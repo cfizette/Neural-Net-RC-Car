@@ -1,2 +1,2 @@
 # Neural-Net-RC-Car
-Neural net powered autonomous RC powered by Tensorflow and OpenCV
+Neural net powered autonomous RC car built using Tensorflow and OpenCV
