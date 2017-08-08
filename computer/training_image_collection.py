@@ -32,6 +32,8 @@ com_port = 3
 # IP Address
 ip_address = '192.168.1.14'
 
+color = 1 # 1 for color, 0 for false
+
 
 def rc_controller():
     ser = serial.Serial(com_port, 115200, timeout=1)
@@ -145,7 +147,7 @@ def get_train_images():
 
                     # Show video feed
                     data = np.fromstring(image_stream.getvalue(), dtype=np.uint8)
-                    image = cv2.imdecode(data, 0)
+                    image = cv2.imdecode(data, color)
                     try:
                         cv2.imshow('image', image)
                         cv2.waitKey(1)
