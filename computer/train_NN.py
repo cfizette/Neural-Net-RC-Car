@@ -18,14 +18,15 @@ from skimage import io
 
 
 image_width = 320
-image_height = 120
+image_height = 240
 
 model = Sequential()
 
 model.add(Flatten(input_shape=(image_height,image_width,1)))
 
 
-model.add(Dense(units=128, activation='relu'))
+#model.add(Dense(units=256, activation='relu'))
+#model.add(Dense(units=128, activation='relu'))
 
 model.add(Dense(units=32, activation='relu'))
 
@@ -35,11 +36,12 @@ model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accur
 
 
 # Data Generators
-train_dir = 'training_images'
-validation_dir = 'test_images'
-batch_size = 10
+train_dir = 'track_type2/training_images'
+validation_dir = 'track_type2/test_images'
+batch_size = 30
 
-train_datagen = ImageDataGenerator(rescale=1./255)
+train_datagen = ImageDataGenerator(rescale=1./255,
+                                   zoom_range=0.2)
 
 test_datagen = ImageDataGenerator(rescale=1./255)
 
@@ -59,11 +61,11 @@ test_set = test_datagen.flow_from_directory(validation_dir,
 # Start Training
 hist = model.fit_generator(
         training_set,
-        steps_per_epoch=40,
+        steps_per_epoch=75,
         epochs=75,
         verbose=1,
         validation_data=test_set,
-        validation_steps=10)
+        validation_steps=11)
 
 
 

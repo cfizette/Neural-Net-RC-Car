@@ -27,7 +27,7 @@ def drive_car():
             self.server_socket.bind((ip_address, 8000))
             self.server_socket.listen(0)
             self.connection = self.server_socket.accept()[0].makefile('rb')
-            self.model = load_model('test_model_1.h5')
+            self.model = load_model('test_model_2.h5')
             self.ser = serial.Serial(com_port, 115200, timeout=1)
             self.send_inst = True
 

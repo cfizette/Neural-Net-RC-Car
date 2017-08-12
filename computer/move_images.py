@@ -12,15 +12,16 @@ import os
 import uuid
 
 
+folder = 'track_type2/training_images3'
 
 def move_images(labels = None):
     
     if labels is None:
-        labels = np.load('training_images/labels.npy')
+        labels = np.load(folder + '/labels.npy')
         
-    left_dir = 'training_images/left'
-    right_dir = 'training_images/right'
-    straight_dir = 'training_images/straight'
+    left_dir = folder + '/left'
+    right_dir = folder + '/right'
+    straight_dir = folder + '/straight'
     
     # Make folders if needed
     if not os.path.exists(left_dir):
@@ -34,26 +35,26 @@ def move_images(labels = None):
         
       
     # Move the files
-    for file in os.listdir('training_images'):
+    for file in os.listdir(folder):
         if file.endswith('.jpg'):
             index = int(os.path.splitext(os.path.basename(file))[0])
             #print(index)
           
             if labels[index-1] == 0:
-                os.rename('training_images/' + file, left_dir + '/' + str(uuid.uuid4()) + '.jpg')
+                os.rename(folder + '/' + file, left_dir + '/' + str(uuid.uuid4()) + '.jpg')
                 #print(index)
                 
             elif labels[index-1] == 1:
-               os.rename('training_images/' + file, right_dir + '/' + str(uuid.uuid4()) + '.jpg')
+               os.rename(folder + '/' + file, right_dir + '/' + str(uuid.uuid4()) + '.jpg')
                 #print(index)
                 
             elif labels[index-1] == 2:
-               os.rename('training_images/' + file, straight_dir + '/' + str(uuid.uuid4()) + '.jpg')
+               os.rename(folder + '/' + file, straight_dir + '/' + str(uuid.uuid4()) + '.jpg')
                 #print(index)
               
           
       
     
           
-    
-    
+
+move_images()
