@@ -4,6 +4,9 @@ Created on Mon Aug  7 00:59:59 2017
 
 @author: Cody Fizette
 """
+'''
+Recommend to use Spyder when running code.
+'''
 
 # Import required modules
 import numpy as np
@@ -43,7 +46,7 @@ model.add(Dense(units=3, activation='softmax'))
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
 # Set up datagenerators
-train_dir = 'track_type2/training_images'
+train_dir = 'track_type2/training_images' # Change to own directory
 validation_dir = 'track_type2/test_images'
 batch_size = 30
 train_datagen = ImageDataGenerator(rescale=1./255,
