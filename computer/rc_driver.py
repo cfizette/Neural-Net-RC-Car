@@ -18,7 +18,6 @@ com_port = 3
 ip_address = '192.168.1.14'
 
 
-
 def drive_car():
     class Driver(object):
 
@@ -30,9 +29,7 @@ def drive_car():
             self.model = load_model('test_model_2.h5')
             self.ser = serial.Serial(com_port, 115200, timeout=1)
             self.send_inst = True
-
             self.drive()
-
 
 
         def drive(self):
@@ -72,27 +69,19 @@ def drive_car():
                     elif pred[0,2] == 1:
                         print("Forward")
                         self.ser.write(b'1')
-                        
-                        
-                    # Show video feed  
-                    
+                                              
+                    # Show video feed                     
                     try:
                         cv2.imshow('image', image)
                         cv2.waitKey(1)
                     except:
                         print("error displaying image")
                         
-                        
-
-
-
-
             except IOError as e:
                 print(e)
 
     Driver()
-
-
+    
 drive_car()
 
 
